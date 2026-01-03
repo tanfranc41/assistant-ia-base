@@ -36,7 +36,7 @@ async function handleSubmit(event) {
       throw new Error("Login failed (invalid response)");
     }
     const token = data?.token;
-    if (!token) {
+    if (typeof token !== "string" || token.length === 0) {
       throw new Error("Login failed (no token returned)");
     }
     authState.token = token;
