@@ -6,6 +6,12 @@ async function handleSubmit(event) {
   event.preventDefault();
   const status = document.getElementById("status");
   const usernameInput = document.getElementById("username");
+  const username = usernameInput.value.trim();
+
+  if (!username) {
+    status.textContent = "Please enter a username";
+    return;
+  }
 
   authState.token = null;
   status.textContent = "Logging in...";
@@ -16,11 +22,11 @@ async function handleSubmit(event) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username: usernameInput.value }),
+      body: JSON.stringify({ username }),
     });
 
     if (!response.ok) {
-      throw new Error("Login failed");
+      throw new Error(`Login failed (${response.status})`);
     }
 
     const data = await response.json();
@@ -29,7 +35,7 @@ async function handleSubmit(event) {
       ? "Logged in"
       : "Login succeeded, no token returned";
   } catch (error) {
-    status.textContent = "Login failed";
+    status.textContent = error?.message || "Login failed";
   }
 }
 
