@@ -30,10 +30,12 @@ async function handleSubmit(event) {
     }
 
     const data = await response.json();
-    authState.token = data?.token || null;
-    status.textContent = authState.token
-      ? "Logged in"
-      : "Login succeeded, no token returned";
+    const token = data?.token;
+    if (!token) {
+      throw new Error("Login failed (no token returned)");
+    }
+    authState.token = token;
+    status.textContent = "Logged in";
   } catch (error) {
     status.textContent = error?.message || "Login failed";
   }
