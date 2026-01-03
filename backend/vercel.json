@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "name": "assistant-ia-backend",
+  "functions": {
+    "api/**/*.{js,ts}": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "regions": [
+    "iad1"
+  ]
+}
