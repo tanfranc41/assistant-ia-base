@@ -29,7 +29,12 @@ async function handleSubmit(event) {
       throw new Error(`Login failed (${response.status})`);
     }
 
-    const data = await response.json();
+    let data;
+    try {
+      data = await response.json();
+    } catch (parseError) {
+      throw new Error("Login failed (invalid response)");
+    }
     const token = data?.token;
     if (!token) {
       throw new Error("Login failed (no token returned)");
