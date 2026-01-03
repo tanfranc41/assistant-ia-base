@@ -1,6 +1,7 @@
 const authState = {
   token: null,
 };
+const USERNAME_MAX_LENGTH = 64;
 
 async function handleSubmit(event) {
   event.preventDefault();
@@ -39,6 +40,10 @@ async function handleSubmit(event) {
     if (typeof token !== "string" || token.length === 0) {
       throw new Error("Login failed (no token returned)");
     }
+    const jwtPattern = /^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+$/;
+    if (!jwtPattern.test(token)) {
+      throw new Error("Login failed (invalid token format)");
+    }
     authState.token = token;
     status.textContent = "Logged in";
   } catch (error) {
@@ -49,6 +54,10 @@ async function handleSubmit(event) {
 
 function wireForm() {
   const form = document.getElementById("login-form");
+  const usernameInput = document.getElementById("username");
+  if (usernameInput) {
+    usernameInput.maxLength = USERNAME_MAX_LENGTH;
+  }
   if (!form) return;
   form.addEventListener("submit", handleSubmit);
 }
