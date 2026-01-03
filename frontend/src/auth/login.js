@@ -6,7 +6,7 @@ const USERNAME_MAX_LENGTH = 64;
 async function handleSubmit(event) {
   event.preventDefault();
   const status = document.getElementById("status");
-  status.removeAttribute("aria-hidden");
+  status.setAttribute("aria-hidden", "false");
   const usernameInput = document.getElementById("username");
   const username = usernameInput.value.trim();
 
@@ -44,23 +44,10 @@ async function handleSubmit(event) {
       throw new Error("Login failed (no token returned)");
     }
     const segments = token.split(".");
-    const base64Url = /^[A-Za-z0-9_-]+={0,2}$/;
-    const hasValidSegments =
+    const base64Url = /^[A-Za-z0-9_-]+$/;
+    const validJwt =
       segments.length === 3 &&
       segments.every((segment) => segment.length > 0 && base64Url.test(segment));
-    const decodesCleanly =
-      hasValidSegments &&
-      segments.every((segment) => {
-        const normalized = segment.replace(/-/g, "+").replace(/_/g, "/");
-        const padded = normalized.padEnd(Math.ceil(normalized.length / 4) * 4, "=");
-        try {
-          atob(padded);
-          return true;
-        } catch {
-          return false;
-        }
-      });
-    const validJwt = hasValidSegments && decodesCleanly;
     if (!validJwt) {
       throw new Error("Login failed (invalid token format)");
     }
