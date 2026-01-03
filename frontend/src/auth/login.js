@@ -32,7 +32,7 @@ async function handleSubmit(event) {
     let data;
     try {
       data = await response.json();
-    } catch (parseError) {
+    } catch {
       throw new Error("Login failed (invalid response)");
     }
     const token = data?.token;
@@ -42,11 +42,7 @@ async function handleSubmit(event) {
     authState.token = token;
     status.textContent = "Logged in";
   } catch (error) {
-    const message = error?.message;
-    status.textContent =
-      typeof message === "string" && message.startsWith("Login failed")
-        ? message
-        : "Login failed";
+    status.textContent = "Login failed";
   }
 }
 
