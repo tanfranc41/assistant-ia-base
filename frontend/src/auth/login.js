@@ -42,7 +42,11 @@ async function handleSubmit(event) {
     authState.token = token;
     status.textContent = "Logged in";
   } catch (error) {
-    status.textContent = error?.message || "Login failed";
+    const message = error?.message;
+    status.textContent =
+      typeof message === "string" && message.startsWith("Login failed")
+        ? message
+        : "Login failed";
   }
 }
 
