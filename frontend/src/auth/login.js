@@ -18,8 +18,6 @@ async function handleSubmit(event) {
     status.textContent = `Username must be ${USERNAME_MAX_LENGTH} characters or fewer`;
     return;
   }
-
-  authState.token = null;
   status.textContent = "Logging in...";
 
   try {
@@ -46,10 +44,23 @@ async function handleSubmit(event) {
       throw new Error("Login failed (no token returned)");
     }
     const segments = token.split(".");
-    const base64Url = /^[A-Za-z0-9\-_]+=?=?$/;
-    const validJwt =
+    const base64Url = /^[A-Za-z0-9_-]+={0,2}$/;
+    const hasValidSegments =
       segments.length === 3 &&
       segments.every((segment) => segment.length > 0 && base64Url.test(segment));
+    const decodesCleanly =
+      hasValidSegments &&
+      segments.every((segment) => {
+        const normalized = segment.replace(/-/g, "+").replace(/_/g, "/");
+        const padded = normalized.padEnd(Math.ceil(normalized.length / 4) * 4, "=");
+        try {
+          atob(padded);
+          return true;
+        } catch {
+          return false;
+        }
+      });
+    const validJwt = hasValidSegments && decodesCleanly;
     if (!validJwt) {
       throw new Error("Login failed (invalid token format)");
     }
