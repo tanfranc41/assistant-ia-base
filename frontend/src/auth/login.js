@@ -13,6 +13,10 @@ async function handleSubmit(event) {
     status.textContent = "Please enter a username";
     return;
   }
+  if (username.length > USERNAME_MAX_LENGTH) {
+    status.textContent = `Username must be ${USERNAME_MAX_LENGTH} characters or fewer`;
+    return;
+  }
 
   authState.token = null;
   status.textContent = "Logging in...";
@@ -40,8 +44,10 @@ async function handleSubmit(event) {
     if (typeof token !== "string" || token.length === 0) {
       throw new Error("Login failed (no token returned)");
     }
-    const jwtPattern = /^[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+\.[A-Za-z0-9-_]+$/;
-    if (!jwtPattern.test(token)) {
+    const segments = token.split(".");
+    const validJwt =
+      segments.length === 3 && segments.every((segment) => segment.length > 0);
+    if (!validJwt) {
       throw new Error("Login failed (invalid token format)");
     }
     authState.token = token;
