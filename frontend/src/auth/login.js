@@ -42,7 +42,8 @@ async function handleSubmit(event) {
     authState.token = token;
     status.textContent = "Logged in";
   } catch (error) {
-    status.textContent = "Login failed";
+    status.textContent =
+      typeof error?.message === "string" ? error.message : "Login failed";
   }
 }
 
