@@ -18,6 +18,7 @@
 - Aucun backend fonctionnel.
 - Aucune authentification réelle.
 - Aucune activation de paiement.
+- Aucune base de données ni persistance.
 - Aucun appel IA.
 - Aucun traitement de données utilisateurs.
 
