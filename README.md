@@ -1,18 +1,25 @@
 # Assistant IA Base
 
-Ce dépôt contient une base simple pour un assistant IA.
+Base de démonstration frontend pour un assistant IA. Tout est statique : il s’agit d’une maquette pour illustrer l’interface, sans logique serveur.
 
-État actuel du projet :
-- Interface web minimale (frontend/index.html)
-- Gestion locale de l’état connecté / déconnecté (démo)
-- Bouton de déconnexion fonctionnel (frontend uniquement)
-- Feuille de route documentaire : docs/ROADMAP.md
+## Périmètre actuel
+- Démo frontend statique (`frontend/index.html`).
+- Interface multilingue (FR / EN / NL / DE).
+- État connecté / déconnecté simulé uniquement (login / logout en mémoire).
 
-Important :
-- Aucune connexion réelle au serveur pour l’instant
-- Aucun stockage de données
-- Aucun backend actif branché
+## Hors périmètre
+- Pas de logique backend.
+- Pas d’authentification réelle.
+- Pas de persistance des données.
 
-Objectif des prochaines étapes :
-- Clarifier la structure du projet
-- Ensuite seulement, relier l’interface au système de connexion réel
+## Documentation
+- `docs/ARCHITECTURE.md` : structure du projet et périmètre de la démo.
+- `docs/ROADMAP.md` : étapes prévues.
+- `docs/I18N.md` et dossiers `docs/fr`, `docs/en`, `docs/nl`, `docs/de` : règles d’internationalisation et traductions alignées.
+
+## Règles multilingues
+- Le français est la langue de référence.
+- Les autres langues sont des traductions alignées sur la version française.
+
+## Contribution
+- Toute modification doit passer par une Pull Request.
