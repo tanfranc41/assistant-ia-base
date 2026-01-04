@@ -35,6 +35,15 @@
       font-weight: bold;
       margin-right: 6px;
     }
+    select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      background: #fff;
+      color: #24292f;
+      margin-top: 6px;
+    }
     button {
       margin-top: 16px;
       width: 100%;
@@ -60,13 +69,22 @@
 </head>
 <body>
   <main class="card">
-    <h1>AI Assistant</h1>
+    <h1 id="title">AI Assistant</h1>
     <div class="field">
-      <span class="label">Username:</span>
+      <span id="language-label" class="label">Language:</span>
+      <select id="language-select">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="nl">Nederlands</option>
+        <option value="de">Deutsch</option>
+      </select>
+    </div>
+    <div class="field">
+      <span id="username-label" class="label">Username:</span>
       <span id="username"></span>
     </div>
     <div class="field">
-      <span class="label">Status:</span>
+      <span id="status-label" class="label">Status:</span>
       <span id="status"></span>
     </div>
     <button id="logout-button">Logout</button>
@@ -74,10 +92,45 @@
   </main>
 
   <script>
-    const DEFAULT_USERNAME = "Guest";
-    const DEFAULT_STATUS = "Logged out";
-    const DEMO_USERNAME = "Demo User";
-    const DEMO_STATUS = "Authenticated";
+    const translations = {
+      en: {
+        langName: "English",
+        title: "AI Assistant",
+        labels: { language: "Language", username: "Username", status: "Status" },
+        actions: { logout: "Logout" },
+        notice: "You have been logged out.",
+        statuses: { loggedOut: "Logged out", authenticated: "Authenticated" },
+        users: { guest: "Guest", demo: "Demo User" },
+      },
+      fr: {
+        langName: "Français",
+        title: "Assistant IA",
+        labels: { language: "Langue", username: "Nom d'utilisateur", status: "Statut" },
+        actions: { logout: "Se déconnecter" },
+        notice: "Vous avez été déconnecté.",
+        statuses: { loggedOut: "Déconnecté", authenticated: "Authentifié" },
+        users: { guest: "Invité", demo: "Utilisateur démo" },
+      },
+      nl: {
+        langName: "Nederlands",
+        title: "AI-assistent",
+        labels: { language: "Taal", username: "Gebruikersnaam", status: "Status" },
+        actions: { logout: "Afmelden" },
+        notice: "Je bent afgemeld.",
+        statuses: { loggedOut: "Afgemeld", authenticated: "Aangemeld" },
+        users: { guest: "Gast", demo: "Demo-gebruiker" },
+      },
+      de: {
+        langName: "Deutsch",
+        title: "KI-Assistent",
+        labels: { language: "Sprache", username: "Benutzername", status: "Status" },
+        actions: { logout: "Abmelden" },
+        notice: "Sie wurden abgemeldet.",
+        statuses: { loggedOut: "Abgemeldet", authenticated: "Angemeldet" },
+        users: { guest: "Gast", demo: "Demo-Benutzer" },
+      },
+    };
+
     function generateDemoToken() {
       if (typeof crypto !== "undefined" && crypto.randomUUID) {
         return crypto.randomUUID();
@@ -88,25 +141,52 @@
     const demoToken = generateDemoToken();
     // In-memory auth token and user snapshot
     let authToken = demoToken;
-    let userState = { username: DEMO_USERNAME, status: DEMO_STATUS };
+    let userState = { userKey: "demo", statusKey: "authenticated" };
+    let currentLang = "en";
 
+    const titleEl = document.getElementById("title");
+    const usernameLabel = document.getElementById("username-label");
+    const statusLabel = document.getElementById("status-label");
+    const languageLabel = document.getElementById("language-label");
+    const languageSelect = document.getElementById("language-select");
     const usernameEl = document.getElementById("username");
     const statusEl = document.getElementById("status");
     const logoutButton = document.getElementById("logout-button");
     const noticeEl = document.getElementById("notice");
 
+    function renderLanguageOptions() {
+      Array.from(languageSelect.options).forEach((option) => {
+        option.textContent = translations[option.value].langName;
+      });
+      languageSelect.value = currentLang;
+    }
+
     function render() {
+      const t = translations[currentLang];
+      document.documentElement.lang = currentLang;
+      titleEl.textContent = t.title;
+      languageLabel.textContent = `${t.labels.language}:`;
+      usernameLabel.textContent = `${t.labels.username}:`;
+      statusLabel.textContent = `${t.labels.status}:`;
+      logoutButton.textContent = t.actions.logout;
+      noticeEl.textContent = t.notice;
       const loggedIn = !!authToken;
-      usernameEl.textContent = userState.username;
-      statusEl.textContent = userState.status;
+      usernameEl.textContent = t.users[userState.userKey];
+      statusEl.textContent = t.statuses[userState.statusKey];
       logoutButton.disabled = !loggedIn;
       noticeEl.hidden = loggedIn;
+      renderLanguageOptions();
     }
 
     logoutButton.addEventListener("click", () => {
       // In-memory only; no persistence or backend logout per project requirements.
       authToken = null; // clear in-memory token
-      userState = { username: DEFAULT_USERNAME, status: DEFAULT_STATUS }; // reset UI state
+      userState = { userKey: "guest", statusKey: "loggedOut" }; // reset UI state
+      render();
+    });
+
+    languageSelect.addEventListener("change", (event) => {
+      currentLang = event.target.value;
       render();
     });
 
