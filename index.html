@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Assistant IA</title>
+  <title>AI Assistant</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -60,7 +60,7 @@
 </head>
 <body>
   <main class="card">
-    <h1>Assistant IA</h1>
+    <h1>AI Assistant</h1>
     <div class="field">
       <span class="label">Username:</span>
       <span id="username"></span>
@@ -74,9 +74,21 @@
   </main>
 
   <script>
+    const DEFAULT_USERNAME = "Guest";
+    const DEFAULT_STATUS = "Logged out";
+    const DEMO_USERNAME = "Demo User";
+    const DEMO_STATUS = "Authenticated";
+    function generateDemoToken() {
+      if (typeof crypto !== "undefined" && crypto.randomUUID) {
+        return crypto.randomUUID();
+      }
+      // Demo-only fallback when Web Crypto is unavailable; Math.random() is not secure and must never be used for production auth tokens.
+      return `demo-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    }
+    const demoToken = generateDemoToken();
     // In-memory auth token and user snapshot
-    let authToken = "demo-token";
-    let userState = { username: "Demo User", status: "Authenticated" };
+    let authToken = demoToken;
+    let userState = { username: DEMO_USERNAME, status: DEMO_STATUS };
 
     const usernameEl = document.getElementById("username");
     const statusEl = document.getElementById("status");
@@ -84,15 +96,17 @@
     const noticeEl = document.getElementById("notice");
 
     function render() {
-      usernameEl.textContent = userState.username || "Guest";
-      statusEl.textContent = userState.status || "Logged out";
-      logoutButton.disabled = !authToken;
-      noticeEl.hidden = !!authToken;
+      const loggedIn = !!authToken;
+      usernameEl.textContent = userState.username;
+      statusEl.textContent = userState.status;
+      logoutButton.disabled = !loggedIn;
+      noticeEl.hidden = loggedIn;
     }
 
     logoutButton.addEventListener("click", () => {
+      // In-memory only; no persistence or backend logout per project requirements.
       authToken = null; // clear in-memory token
-      userState = { username: "", status: "" }; // reset UI state
+      userState = { username: DEFAULT_USERNAME, status: DEFAULT_STATUS }; // reset UI state
       render();
     });
 
