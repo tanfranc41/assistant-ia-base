@@ -23,5 +23,5 @@
 
 ### 4) Plan de correction (3 étapes max, sans code)
 1. Obtenir un jeton/droit GitHub valide, ouvrir l’onglet « Branches » du dépôt et vérifier que `main` existe et est à jour.
-2. Avec cet accès, récupérer l’historique complet (`git fetch --all --unshallow`) ou consulter les onglets « Commits » et « PR » pour lister les fichiers de `main` et les diffs (notamment la PR #19).
-3. Dans l’onglet « Code », comparer le contenu réel aux PRs : si le dépôt reste vide, décider de réinitialiser ou recréer la structure attendue (interface / serveur / tests) avant toute nouvelle PR.
+2. Récupérer l’historique complet (`git fetch --all --unshallow`) ou, via les onglets « Commits » et « PR », lister les fichiers de `main` et les diffs (notamment la PR #19).
+3. Dans l’onglet « Code », comparer fichiers visibles et PRs ; si le dépôt reste vide, décider de réinitialiser ou recréer la structure attendue (interface / serveur / tests) avant une nouvelle PR.
