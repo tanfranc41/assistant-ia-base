@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assistant IA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f8fa;
+      color: #24292f;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #d0d7de;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 1px 2px rgba(27, 31, 35, 0.1);
+      max-width: 360px;
+      width: 90%;
+    }
+    h1 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 20px;
+    }
+    .field {
+      margin: 8px 0;
+    }
+    .label {
+      font-weight: bold;
+      margin-right: 6px;
+    }
+    button {
+      margin-top: 16px;
+      width: 100%;
+      padding: 10px 12px;
+      border: none;
+      border-radius: 6px;
+      background: #cf222e;
+      color: #fff;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background: #d8dee4;
+      color: #57606a;
+      cursor: not-allowed;
+    }
+    .notice {
+      margin-top: 12px;
+      color: #0969da;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Assistant IA</h1>
+    <div class="field">
+      <span class="label">Username:</span>
+      <span id="username"></span>
+    </div>
+    <div class="field">
+      <span class="label">Status:</span>
+      <span id="status"></span>
+    </div>
+    <button id="logout-button">Logout</button>
+    <div id="notice" class="notice" hidden>You have been logged out.</div>
+  </main>
+
+  <script>
+    // In-memory auth token and user snapshot
+    let authToken = "demo-token";
+    let userState = { username: "Demo User", status: "Authenticated" };
+
+    const usernameEl = document.getElementById("username");
+    const statusEl = document.getElementById("status");
+    const logoutButton = document.getElementById("logout-button");
+    const noticeEl = document.getElementById("notice");
+
+    function render() {
+      usernameEl.textContent = userState.username || "Guest";
+      statusEl.textContent = userState.status || "Logged out";
+      logoutButton.disabled = !authToken;
+      noticeEl.hidden = !!authToken;
+    }
+
+    logoutButton.addEventListener("click", () => {
+      authToken = null; // clear in-memory token
+      userState = { username: "", status: "" }; // reset UI state
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>
