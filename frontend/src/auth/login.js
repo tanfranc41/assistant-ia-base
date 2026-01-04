@@ -19,9 +19,7 @@ async function fetchCurrentUser() {
       },
     });
     if (!response.ok) {
-      if (response.status === 401) {
-        authState.token = null;
-      }
+      authState.token = null;
       throw new Error("Failed to load profile");
     }
     let body;
