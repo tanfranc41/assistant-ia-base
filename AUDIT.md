@@ -12,8 +12,8 @@
 ### 2) Ce qui a été fait via PRs (demandes de fusion)
 | PR | But (objectif) | Fichiers touchés | Statut |
 | --- | --- | --- | --- |
-| #19 (`fix-logout-implementation`) | But exact : inconnu (seule la mention du titre est visible dans le commit de fusion `40f9b26`). | Inconnu (historique et diff absents dans le clone). | Indiqué comme fusionné dans l’historique importé. |
-| PR actuelle (branche `copilot/audit-depot-complet`) | Audit complet du dépôt. | README.md seulement présent dans l’arborescence locale. | En cours. |
+| #19 (`fix-logout-implementation`) | Inconnu (seul le titre du merge `40f9b26` est visible). | Inconnu (historique/diff manquants dans le clone). | Marquée fusionnée dans l’historique importé. |
+| PR actuelle (branche `copilot/audit-depot-complet`) | Audit du dépôt. | README.md seul dans l’arborescence locale. | En cours. |
 
 ### 3) Problèmes / incohérences
 - Branche `main` inaccessible (absence locale et échec d’authentification distante) ⇒ impossible de confirmer son contenu réel.
