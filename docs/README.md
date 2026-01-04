@@ -5,7 +5,7 @@ Le dossier `docs/` rassemble l’ensemble de la documentation du projet.
 ## Documents disponibles
 - `ARCHITECTURE.md` : structure du projet et périmètre de la démo.
 - `ROADMAP.md` : étapes futures prévues.
-- `I18N.md` : règles d’internationalisation pour la démo frontend.
+- `fr/I18N.md` (et traductions) : règles d’internationalisation pour la démo frontend.
 
 ## Organisation multilingue
 - La documentation existe en `fr`, `en`, `nl`, `de`.
