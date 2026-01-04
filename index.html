@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assistant IA Base</title>
+</head>
+<body>
+  <h1>Profile</h1>
+  <form id="token-form">
+    <label for="token-input">Bearer token</label>
+    <input id="token-input" type="password" autocomplete="new-password" />
+    <button type="submit">Call /api/auth/me</button>
+  </form>
+  <p id="result" aria-live="polite"></p>
+  <script>
+    const state = { token: '' };
+    const result = document.getElementById('result');
+    const tokenInput = document.getElementById('token-input');
+
+    function clearToken() {
+      state.token = '';
+      tokenInput.value = '';
+    }
+
+    async function fetchMe() {
+      if (!state.token) {
+        result.textContent = 'Add a token first.';
+        return;
+      }
+
+      const token = state.token;
+      result.textContent = 'Loading...';
+      try {
+        const response = await fetch('/api/auth/me', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        if (response.ok) {
+          let body;
+          try {
+            body = await response.json();
+          } catch (error) {
+            console.error('Invalid JSON from /api/auth/me', error);
+            result.textContent = 'Invalid response';
+            return;
+          }
+          const username = body && typeof body.username === 'string'
+            ? body.username
+            : '';
+          result.textContent = username ? 'Signed in as ' + username : 'Signed in';
+        } else if (response.status === 401 || response.status === 403) {
+          result.textContent = 'Unauthorized';
+          clearToken();
+        } else {
+          result.textContent = 'Failed to load user info';
+        }
+      } catch (error) {
+        console.error('Failed to fetch /api/auth/me', error);
+        result.textContent = 'Request failed';
+      }
+    }
+
+    document.getElementById('token-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      state.token = tokenInput.value.trim();
+      const parts = state.token.split('.');
+      const base64urlSegment = /^[A-Za-z0-9_-]+$/;
+      // Basic client-side format check; full validation happens server-side.
+      if (parts.length !== 3 || parts.some((part) => !base64urlSegment.test(part))) {
+        result.textContent = 'Invalid token format';
+        return;
+      }
+      fetchMe();
+    });
+  </script>
+</body>
+</html>
