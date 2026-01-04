@@ -3,9 +3,10 @@
 Ce dépôt contient une base simple pour un assistant IA.
 
 État actuel du projet :
-- Interface web minimale (index.html)
+- Interface web minimale (frontend/index.html)
 - Gestion locale de l’état connecté / déconnecté (démo)
 - Bouton de déconnexion fonctionnel (frontend uniquement)
+- Feuille de route documentaire : docs/ROADMAP.md
 
 Important :
 - Aucune connexion réelle au serveur pour l’instant
