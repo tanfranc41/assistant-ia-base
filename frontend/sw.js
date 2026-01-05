@@ -1,5 +1,6 @@
 const CACHE_NAME = "ai-assistant-shell-v1";
 const SHELL_URL = "./index.html";
+// Update this list if shell assets change.
 const ASSETS = [
   "./",
   SHELL_URL,
@@ -49,7 +50,7 @@ self.addEventListener("fetch", (event) => {
           .then(
             (cached) =>
               cached ||
-              new Response("Offline", {
+              new Response("App is offline. Please check your connection and try again.", {
                 status: 503,
                 statusText: "Offline",
                 headers: { "Content-Type": "text/plain" },
