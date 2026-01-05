@@ -5,23 +5,26 @@ Préparer le projet à une compatibilité multi-appareils (mobile, tablette, bur
 - Icônes requises : 192x192 et 512x512.
 - 192x192 : utilisée pour les raccourcis et aperçus rapides.
 - 512x512 : utilisée pour l’installation et les écrans de lancement.
-- Aucun fichier d’icône n’est ajouté pour l’instant.
+- Icônes déjà présentes dans `frontend/icons/` pour les besoins de la démo statique (non adaptées à la production).
 
-# Manifeste web (conceptuel)
-Champs attendus pour le futur manifeste : `name`, `short_name`, `icons`, `start_url`, `display`, `theme_color`, `background_color`.
-Aucun fichier de manifeste n’est créé à ce stade.
+# Manifeste web
+- Fichier `frontend/manifest.json` minimal présent pour la démo (nom, couleurs, icônes). 
+- Pas de gestion avancée : aucune orientation, aucune configuration spécifique à des environnements.
+- Toute évolution production devra revoir complètement le manifeste (icônes, noms, scope, start_url).
 
-# Comportement hors ligne (concept)
-Comportement minimal envisagé : une page d’information ou un shell mis en cache pour informer l’utilisateur hors ligne. Aucun service worker n’est implémenté pour le moment.
+# Comportement hors ligne
+- Service worker `frontend/sw.js` en place uniquement pour mettre en cache le shell et afficher un message “Offline”.
+- Aucun cache applicatif métier, aucune synchronisation en arrière-plan, aucune persistance.
+- Si le périmètre change, revoir les stratégies de cache et les versions de cache avant toute activation.
 
 # Compatibilité
 Cible : navigateurs modernes sur mobile, tablette et bureau. Pas de support pour les navigateurs obsolètes. Approche web-first.
 
 # Limites actuelles
-- Aucun code PWA implémenté.
-- Aucun service worker.
-- Aucun cache hors ligne.
-- Aucun prompt d’installation.
+- Implémentation minimale et purement démonstrative (shell statique seulement).
+- Icônes et manifeste à considérer comme provisoires.
+- Aucune gestion d’état ou de données hors ligne.
+- Aucun prompt d’installation ni configuration d’environnement.
 
 # Passage à l’implémentation
 Le lancement d’une PWA nécessitera une phase explicite d’implémentation ultérieure. Ce document sert uniquement de référence préparatoire.
