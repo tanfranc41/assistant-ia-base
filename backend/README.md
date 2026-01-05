@@ -1,15 +1,13 @@
-# Backend — Demo only
+# Backend — Phase 2 (work in progress)
 
-Ce répertoire est volontairement vide.
+Ce dossier démarre officiellement la Phase 2 avec un backend minimal et volontairement explicite.
 
 ## Rôle
-- Aucun backend n’est implémenté dans cette phase.
-- Le projet est une **démo frontend statique** uniquement.
+- Serveur Express simple, sans authentification ni base de données.
+- Aucune persistance, aucune logique métier.
+- Un seul endpoint de test : `GET /health` renvoie `{ "status": "ok", "phase": "phase-2" }`.
+- Base technique uniquement, destinée aux itérations futures.
 
-## Règles
-- ❌ Pas de logique serveur
-- ❌ Pas d’API
-- ❌ Pas d’authentification réelle
-- ❌ Pas de persistance des données
-
-Toute implémentation backend devra faire l’objet d’une **nouvelle phase explicitement validée**.
+## Usage
+- Installer les dépendances dans `backend/`.
+- Lancer le serveur : `npm start` (port 3000).
