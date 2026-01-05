@@ -8,13 +8,14 @@ Préparer le projet à une compatibilité multi-appareils (mobile, tablette, bur
 - Aucun fichier d’icône n’est ajouté pour l’instant.
 
 # Manifeste web (conceptuel)
-Champs attendus pour le futur manifeste : `name`, `short_name`, `icons`, `start_url`, `display`, `theme_color`, `background_color`. Aucun fichier de manifeste n’est créé à ce stade.
+Champs attendus pour le futur manifeste : `name`, `short_name`, `icons`, `start_url`, `display`, `theme_color`, `background_color`.
+Aucun fichier de manifeste n’est créé à ce stade.
 
 # Comportement hors ligne (concept)
 Comportement minimal envisagé : une page d’information ou un shell mis en cache pour informer l’utilisateur hors ligne. Aucun service worker n’est implémenté pour le moment.
 
 # Compatibilité
-Cible : navigateurs modernes sur mobile, tablette et bureau. Pas de support WAP ou d’anciens navigateurs. Approche web-first.
+Cible : navigateurs modernes sur mobile, tablette et bureau. Pas de support pour les navigateurs obsolètes. Approche web-first.
 
 # Limites actuelles
 - Aucun code PWA implémenté.
