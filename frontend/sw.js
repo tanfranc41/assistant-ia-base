@@ -1,7 +1,8 @@
 const CACHE_NAME = "ai-assistant-shell-v1";
+const SHELL_URL = "./index.html";
 const ASSETS = [
   "./",
-  "./index.html",
+  SHELL_URL,
   "./manifest.json",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
@@ -27,6 +28,7 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") {
+    event.respondWith(fetch(event.request));
     return;
   }
 
@@ -37,7 +39,7 @@ self.addEventListener("fetch", (event) => {
 
   if (event.request.mode === "navigate") {
     event.respondWith(
-      fetch(event.request).catch(() => caches.match("./index.html"))
+      fetch(event.request).catch(() => caches.match(SHELL_URL))
     );
     return;
   }
