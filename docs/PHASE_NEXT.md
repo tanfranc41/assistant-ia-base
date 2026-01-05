@@ -2,6 +2,11 @@
 - La phase de démonstration est définitivement close.
 - Cette étape ouvre une phase strictement dédiée à la préparation, sans implémentation fonctionnelle.
 
+## Prochaine étape (au choix, calmement)
+- A) on s’arrête là (freeze total)
+- B) on prépare un GO/NO-GO checklist
+- C) on fait un audit final ultra court (1 page)
+
 ## Objectifs de la phase
 - Préparer la future architecture backend.
 - Préparer l'intégration future de l'authentification et du paiement.
