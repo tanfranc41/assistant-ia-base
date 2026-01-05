@@ -38,7 +38,6 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) {
-    event.respondWith(fetch(event.request));
     return;
   }
 
@@ -50,11 +49,14 @@ self.addEventListener("fetch", (event) => {
           .then(
             (cached) =>
               cached ||
-              new Response("App is offline. Please check your connection and try again.", {
-                status: 503,
-                statusText: "Offline",
-                headers: { "Content-Type": "text/plain" },
-              })
+              new Response(
+                "<!doctype html><html><body><h1>Offline</h1><p>App is offline. Please check your connection and try again.</p></body></html>",
+                {
+                  status: 503,
+                  statusText: "Offline",
+                  headers: { "Content-Type": "text/html" },
+                }
+              )
           )
       )
     );
