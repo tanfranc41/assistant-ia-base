@@ -2,7 +2,7 @@
 
 ## Statut
 - Phase de conception uniquement
-- Aucune mise en œuvre d’autorisation autorisée
+- Aucune implémentation d’autorisation autorisée
 
 ## Objectifs
 - Définir clairement les principes de contrôle d’accès
@@ -12,7 +12,7 @@
 ## Concepts clés (conceptuel)
 - Rôle : ensemble nommé de permissions (ex. : admin, user, reader)
 - Permission / scope : action explicitement autorisée (ex. : read:profile, write:settings)
-- Attribution : manière dont les rôles/scopes sont associés à un utilisateur (conceptuel uniquement)
+- Affectation : manière dont les rôles/scopes sont associés à un utilisateur (conceptuel uniquement)
 
 ## Règles d’autorisation
 - Autorisation appliquée côté serveur uniquement
@@ -26,7 +26,7 @@
 
 ## Hors périmètre explicite
 - Aucun code d’autorisation
-- Aucun choix de librairie RBAC/ABAC
+- Aucun choix de bibliothèque RBAC/ABAC
 - Aucun schéma de base de données ou persistance
 - Aucune logique de permission côté frontend
 
