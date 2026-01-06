@@ -27,7 +27,7 @@
 - Ajouter un endpoint sans OpenAPI
 - Modifier un endpoint gelé
 - Implémenter avant validation documentaire
-- Ajouter auth, persistance ou sécurité avancée sans décision formelle
+- Ajouter auth, persistence ou sécurité avancée sans décision formelle
 
 ## Validation
 - Conformité stricte à OpenAPI
