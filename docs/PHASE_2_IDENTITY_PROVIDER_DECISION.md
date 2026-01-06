@@ -23,7 +23,7 @@
 - Aucun endpoint protégé implémenté
 
 ## Porte suivante
-- Implémentation authentification possible uniquement après :
+- Implémentation de l’authentification possible uniquement après :
   - Validation des contrats API
   - Validation sécurité
   - Décision formelle de démarrage implémentation
