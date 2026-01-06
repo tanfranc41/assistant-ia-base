@@ -6,6 +6,7 @@ Le dossier `docs/` rassemble l’ensemble de la documentation du projet.
 - `ARCHITECTURE.md` : structure du projet et périmètre de la démo.
 - `ROADMAP.md` : étapes futures prévues.
 - `fr/I18N.md` (et traductions) : règles d’internationalisation pour la démo frontend.
+- `PHASE_2_API_FIRST.md` : cadrage de l’approche API First pour la Phase 2.
 
 ## Organisation multilingue
 - La documentation existe en `fr`, `en`, `nl`, `de`.
