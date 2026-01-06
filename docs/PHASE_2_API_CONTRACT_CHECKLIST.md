@@ -37,5 +37,5 @@
 - [ ] Corps 500 conforme au schéma Error (error, message)
 
 ## Règle
-- Si un élément échoue → l’API n’est pas conforme
+- Si un élément échoue, l’API n’est pas conforme
 - Aucun nouvel endpoint ou logique n’est autorisé tant que la checklist n’est pas entièrement validée
