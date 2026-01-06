@@ -1,7 +1,7 @@
 # Phase 2 – Décision : Fournisseur d’identité
 
 ## Statut
-- Décision actée
+- Décision adoptée
 - Aucune implémentation encore autorisée
 
 ## Option retenue
@@ -23,7 +23,7 @@
 - Aucun endpoint protégé implémenté
 
 ## Porte suivante
-- Implémentation auth possible uniquement après :
+- Implémentation authentification possible uniquement après :
   - Validation des contrats API
   - Validation sécurité
   - Décision formelle de démarrage implémentation
