@@ -41,6 +41,27 @@ paths:
                   status:
                     type: string
                     example: "backend baseline active"
+  /api/version:
+    get:
+      summary: Get API version
+      description: Return static API version and current phase.
+      responses:
+        '200':
+          description: API version info
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - version
+                  - phase
+                properties:
+                  version:
+                    type: string
+                    example: "0.1.0"
+                  phase:
+                    type: string
+                    example: "phase-2"
 components:
   schemas:
     Error:
