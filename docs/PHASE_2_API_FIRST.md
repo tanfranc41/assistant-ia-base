@@ -13,7 +13,7 @@
 - Guide de conventions (noms, ressources, verbes, gestion des identifiants, traces et idempotence).
 - Stratégie d’authentification et d’autorisations décrite (sans secrets ni intégrations réelles).
 - Catalogue priorisé des endpoints Phase 2 avec exemples de requêtes/réponses JSON.
-- Mocks ou serveurs simulés générés depuis la spécification pour dérisquer l’intégration front.
+- Mocks ou serveurs simulés générés depuis la spécification pour réduire les risques de l’intégration front.
 
 ## Méthode de travail
 - Ateliers design-first impliquant produit, UX, sécurité et données.
@@ -25,7 +25,7 @@
 - Pas d’implémentation de logique métier réelle tant que la spécification n’est pas validée.
 
 ## Critères de go/no-go Phase 2 (API)
-- Spécification OpenAPI approuvée et stable (version 0.x gelée pour la phase de build).
+- Spécification OpenAPI approuvée et stable (version 0.x figée pour la phase de build).
 - Conventions d’erreur, de journalisation et de versionnage partagées.
 - Mocks disponibles pour le front et scripts d’automatisation prêts à générer clients/serveur.
 - Plan de migration et compatibilité ascendante défini pour la v1.0 des API.
