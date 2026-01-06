@@ -6,6 +6,7 @@ Ce dossier démarre officiellement la Phase 2 avec un backend minimal et volonta
 - Serveur Express simple, sans authentification ni base de données.
 - Aucune persistance, aucune logique métier.
 - Un seul endpoint de test : `GET /health` renvoie `{ "status": "ok", "phase": "phase-2" }`.
+- Endpoint d'info statique : `GET /api/info` renvoie `{ "name": "AI Assistant", "phase": "phase-2", "status": "backend baseline active" }`.
 - Base technique uniquement, destinée aux itérations futures.
 
 ## Usage
