@@ -1,7 +1,9 @@
 # Architecture du projet
 
 - **frontend/index.html** : interface de démonstration uniquement, simule l’état connecté/déconnecté ; aucune authentification réelle.
-- **backend/** : serveur Express minimal (Phase 2), sans authentification ni base de données, sans persistance ; expose `GET /health` (`{ status: "ok", phase: "phase-2" }`) et `GET /api/info` (`{ name: "AI Assistant", phase: "phase-2", status: "backend baseline active" }`).
+- **backend/** : serveur Express minimal (Phase 2), sans authentification ni base de données, sans persistance.
+  - Endpoint `GET /health` → `{ status: "ok", phase: "phase-2" }`.
+  - Endpoint `GET /api/info` → `{ name: "AI Assistant", phase: "phase-2", status: "backend baseline active" }`.
 
 ## Ce qui est simulé
 - Utilisateur de démonstration.
