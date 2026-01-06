@@ -1,0 +1,50 @@
+openapi: 3.0.3
+info:
+  title: AI Assistant API
+  version: 0.1.0
+  description: "Phase 2 API specification (baseline only)."
+servers:
+  - url: http://localhost:3000
+paths:
+  /health:
+    get:
+      responses:
+        '200':
+          description: Health status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "ok"
+                  phase:
+                    type: string
+                    example: "phase-2"
+  /api/info:
+    get:
+      responses:
+        '200':
+          description: Basic API info
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: "AI Assistant"
+                  phase:
+                    type: string
+                    example: "phase-2"
+                  status:
+                    type: string
+                    example: "backend baseline active"
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
