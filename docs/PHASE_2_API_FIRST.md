@@ -18,7 +18,8 @@
 ## Méthode de travail
 - Ateliers design-first impliquant produit, UX, sécurité et données.
 - Revues de contrats itératives avec les consommateurs (approche orientée consommateur quand applicable).
-- Validation automatique : linting OpenAPI, tests contractuels, génération client/serveur pour vérifications locales.
+- Validation automatique : linting OpenAPI et tests contractuels.
+- Génération client/serveur depuis la spécification pour vérifications locales.
 
 ## Hors périmètre immédiat
 - Pas de déploiement, pas de base de données ni de secrets.
