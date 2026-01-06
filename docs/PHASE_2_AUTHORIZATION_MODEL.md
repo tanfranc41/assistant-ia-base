@@ -30,7 +30,7 @@
 - Aucun schéma de base de données ou persistance
 - Aucune logique de permission côté frontend
 
-## Portail de décision
+## Porte de décision
 - L’implémentation d’autorisation ne peut commencer qu’après :
   - Validation de ce document
   - Mise à jour des contrats d’API en conséquence
