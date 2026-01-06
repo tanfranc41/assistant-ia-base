@@ -1,12 +1,17 @@
 # Phase 2 – Journal de décisions
 
 ## Statut
-- Phase 2 non démarrée
+- Phase 2 en mode design uniquement (authentification cadrée)
 - Aucune implémentation autorisée
+
+## Décisions actées (authentification)
+- Authentification basée sur token, backend stateless, gérée au niveau API (voir `PHASE_2_AUTHENTICATION_DESIGN.md`).
 
 ## Décisions à prendre plus tard
 - Choix d’architecture backend
-- Stratégie d’authentification
+- Choix de l’identity provider (interne vs externe)
+- Format des tokens, durée de vie et stratégie de refresh
+- Modèle de rôles et permissions
 - Approche de persistance des données
 - Principes de conception API
 - Modèle de sécurité
