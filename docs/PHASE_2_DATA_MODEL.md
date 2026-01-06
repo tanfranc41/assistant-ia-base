@@ -13,12 +13,12 @@
 
 ### User
 - **Rôle / portée** : représente une personne pouvant s’authentifier et interagir avec le système.
-- **Attributs clés (noms uniquement)** : id, email, mot_de_passe_hash, nom_complet, rôle(s)/scopes, état_compte, date_création, date_mise_à_jour.
+- **Attributs clés (noms uniquement)** : id, email, preuve_authentification (hash ou équivalent), nom_complet, rôle(s)/scopes, état_compte, date_création, date_mise_à_jour.
 - **Relations** : possède plusieurs sessions/tokens actifs ou expirés ; peut être référencé par des événements d’audit (conceptuels).
 
 ### Session / Token (conceptuel)
 - **Rôle / portée** : matérialise une authentification active ou un jeton d’accès/actualisation pour un utilisateur.
-- **Attributs clés (noms uniquement)** : token_id, utilisateur_id, type_token (access/refresh), scopes, expiration, émis_le, émis_par (client/appareil), statut (valide/révoqué), adresse_ip/device_fingerprint (optionnel).
+- **Attributs clés (noms uniquement)** : token_id, utilisateur_id, type_token (access/refresh), scopes, expiration, émis_le, dernière_utilisation, émis_par (client/appareil), statut (valide/révoqué), raison_révocation, adresse_ip/device_fingerprint (optionnel).
 - **Relations** : appartient à un utilisateur ; peut être associé à des événements d’audit ou de sécurité (conceptuels).
 
 ## Hors périmètre explicite
