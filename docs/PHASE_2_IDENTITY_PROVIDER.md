@@ -10,7 +10,7 @@
 
 ## Options à considérer (conceptuel)
 - Gestion interne des identités (utilisateurs personnalisés)
-- Fournisseur externe (compatible OIDC, par ex. OAuth2 / OpenID Connect)
+- Fournisseur externe (compatible OpenID Connect)
 - Approche hybride (IdP externe + profil utilisateur interne)
 
 ## Critères de comparaison
