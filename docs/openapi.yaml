@@ -22,6 +22,24 @@ paths:
                   phase:
                     type: string
                     example: "phase-2"
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: not_found
+                message: Endpoint not found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: internal_error
+                message: Internal server error
   /api/info:
     get:
       responses:
@@ -41,6 +59,24 @@ paths:
                   status:
                     type: string
                     example: "backend baseline active"
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: not_found
+                message: Endpoint not found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: internal_error
+                message: Internal server error
   /api/version:
     get:
       summary: Get API version
@@ -62,6 +98,24 @@ paths:
                   phase:
                     type: string
                     example: "phase-2"
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: not_found
+                message: Endpoint not found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: internal_error
+                message: Internal server error
 components:
   schemas:
     Error:
@@ -69,3 +123,10 @@ components:
       properties:
         error:
           type: string
+          example: "internal_error"
+        message:
+          type: string
+          example: "Internal server error"
+      required:
+        - error
+        - message
