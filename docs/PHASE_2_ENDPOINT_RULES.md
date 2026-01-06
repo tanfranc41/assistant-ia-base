@@ -6,7 +6,7 @@
 ## Ordre obligatoire
 1. Définition dans la spécification OpenAPI (`docs/openapi.yaml`)
 2. Validation du contrat (revue humaine)
-3. Création d’un document de plan d’endpoint (`PHASE_2_ENDPOINT_*.md`)
+3. Création d’un document de plan d’endpoint (`PHASE_2_ENDPOINT_*.md`, ex. `PHASE_2_ENDPOINT_INFO_PLAN.md`)
 4. Implémentation backend minimale
 5. Validation manuelle
 
@@ -25,7 +25,7 @@
 
 ## Ce qui est interdit
 - Ajouter un endpoint sans OpenAPI
-- Modifier un endpoint gelé
+- Modifier un endpoint gelé (spécification validée et figée)
 - Implémenter avant validation documentaire
 - Ajouter auth, persistence ou sécurité avancée sans décision formelle
 
