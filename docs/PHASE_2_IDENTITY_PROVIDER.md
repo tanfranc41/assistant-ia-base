@@ -29,6 +29,6 @@
 ## Portail de décision
 - Une option doit être explicitement sélectionnée
 - Sélection requise avant :
-  - Implémentation de l’auth
+  - Implémentation de l’authentification
   - Finalisation du format des jetons
   - Endpoints API protégés
