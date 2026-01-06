@@ -13,11 +13,11 @@
 - Guide de conventions (noms, ressources, verbes, gestion des identifiants, traces et idempotence).
 - Stratégie d’authentification et d’autorisations décrite (sans secrets ni intégrations réelles).
 - Catalogue priorisé des endpoints Phase 2 avec exemples de requêtes/réponses JSON.
-- Mocks ou serveurs simulés générés depuis la spécification pour réduire les risques de l’intégration front.
+- Mocks ou serveurs simulés générés depuis la spécification pour réduire les risques d’intégration du front.
 
 ## Méthode de travail
 - Ateliers design-first impliquant produit, UX, sécurité et données.
-- Revues de contrats itératives avec les consommateurs (consumer-driven quand applicable).
+- Revues de contrats itératives avec les consommateurs (approche orientée consommateur quand applicable).
 - Validation automatique : linting OpenAPI, tests contractuels, génération client/serveur pour vérifications locales.
 
 ## Hors périmètre immédiat
