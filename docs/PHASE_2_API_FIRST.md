@@ -13,7 +13,7 @@
 - Guide de conventions (noms, ressources, verbes, gestion des identifiants, traces et idempotence).
 - Stratégie d’authentification et d’autorisations décrite (sans secrets ni intégrations réelles).
 - Catalogue priorisé des endpoints Phase 2 avec exemples de requêtes/réponses JSON.
-- Mocks ou serveurs simulés générés depuis la spécification pour dé-risquer l’intégration front.
+- Mocks ou serveurs simulés générés depuis la spécification pour dérisquer l’intégration front.
 
 ## Méthode de travail
 - Ateliers design-first impliquant produit, UX, sécurité et données.
