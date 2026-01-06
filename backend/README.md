@@ -7,6 +7,7 @@ Ce dossier démarre officiellement la Phase 2 avec un backend minimal et volonta
 - Aucune persistance, aucune logique métier.
 - Un seul endpoint de test : `GET /health` renvoie `{ "status": "ok", "phase": "phase-2" }`.
 - Endpoint d'info statique : `GET /api/info` renvoie `{ "name": "AI Assistant", "phase": "phase-2", "status": "backend baseline active" }`.
+- Endpoint de version statique : `GET /api/version` renvoie `{ "version": "0.1.0", "phase": "phase-2" }`.
 - Base technique uniquement, destinée aux itérations futures.
 
 ## Usage

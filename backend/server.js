@@ -11,6 +11,10 @@ app.get('/api/info', (req, res) => {
   res.json({ name: 'AI Assistant', phase: 'phase-2', status: 'backend baseline active' });
 });
 
+app.get('/api/version', (req, res) => {
+  res.json({ version: '0.1.0', phase: 'phase-2' });
+});
+
 app.listen(port, () => {
   console.log(`Phase 2 backend running on port ${port}`);
 });
