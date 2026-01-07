@@ -5,12 +5,12 @@
 - Aucune implémentation encore autorisée
 
 ## Option retenue
-- Option choisie : [INTERNE | EXTERNE (OIDC) | HYBRIDE]
+- Option choisie : INTERNE
 
 ## Justification
-- Raisons fonctionnelles
-- Raisons de sécurité
-- Raisons de complexité / évolutivité
+- La gestion interne offre une maîtrise complète de la sécurité et évite toute dépendance externe ou verrouillage fournisseur.
+- Cette approche simplifie l'architecture, réduit la complexité opérationnelle et facilite l'audit du système d'authentification.
+- La maintenabilité à long terme est optimale car toute la logique reste sous contrôle direct du projet.
 
 ## Ce que cette décision autorise
 - Finalisation du format de jeton
