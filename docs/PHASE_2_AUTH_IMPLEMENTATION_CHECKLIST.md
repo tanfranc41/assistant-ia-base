@@ -1,4 +1,4 @@
-# Phase 2 – Checklist de démarrage implémentation Auth
+# Phase 2 – Checklist de démarrage de l'implémentation Auth
 
 ## Statut
 - Phase de transition conception → implémentation

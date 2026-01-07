@@ -647,7 +647,29 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
-      description: "JWT token-based authentication (conceptual - not yet implemented)"
+      description: |
+        JWT token-based authentication (conceptual - not yet implemented)
+        
+        Available scopes:
+        - read:profile - Read user profile information
+        - write:profile - Update user profile information
+        - read:preferences - Read user preferences
+        - write:preferences - Update user preferences
+        - read:conversations - Read user conversations
+        - write:conversations - Create and delete conversations
+        - read:messages - Read conversation messages
+        - write:messages - Send messages in conversations
+        - admin:users - Manage users (admin only)
+        - admin:read - Read system statistics (admin only)
+        
+        The token payload will contain:
+        - token_id: Unique token identifier
+        - user_id: User identifier
+        - issued_at: Token issue timestamp
+        - expires_at: Token expiration timestamp
+        - scopes: List of granted scopes
+        - issuer: Token issuer
+        - version: Token format version
   schemas:
     Error:
       type: object
