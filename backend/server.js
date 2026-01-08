@@ -3,6 +3,7 @@ const authMiddleware = require('./middleware/auth');
 
 const app = express();
 const port = 3000;
+const protectedRouter = express.Router();
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', phase: 'phase-2' });
@@ -16,9 +17,13 @@ app.get('/api/version', (req, res) => {
   res.json({ version: '0.1.0', phase: 'phase-2' });
 });
 
-app.get('/api/auth/test', authMiddleware, (req, res) => {
+protectedRouter.use(authMiddleware);
+
+protectedRouter.get('/auth/test', (req, res) => {
   res.json({ status: 'ok', auth: 'passed', phase: 'phase-2' });
 });
+
+app.use('/api', protectedRouter);
 
 app.use((req, res) => {
   res.status(404).json({ error: 'not_found', message: 'Endpoint not found' });
