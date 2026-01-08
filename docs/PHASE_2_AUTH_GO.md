@@ -2,7 +2,8 @@
 
 ## Statut
 - Décision adoptée
-- L’implémentation de l’authentification est autorisée
+- L’implémentation de l’authentification est autorisée (réalisée en version minimale structure-only)
+- Phase 2 Auth désormais gelée sans changement de phase explicite
 
 ## Pré-requis validés
 - Spécification OpenAPI figée

@@ -12,7 +12,8 @@ Le dossier `docs/` rassemble l’ensemble de la documentation du projet.
 - Le français est la langue de référence.
 
 ## Règles importantes
-- Frontend de démonstration uniquement.
-- Aucune logique backend.
-- Pas d’authentification réelle.
+- Frontend de démonstration uniquement côté UI.
+- Backend minimal Phase 2 présent (health/info/version publics + `/api/auth/test` protégé par middleware auth structure-only Base64 JSON).
+- Authentification non sécurisée, temporaire et gelée : aucune modification du middleware ou nouveaux comportements sans changement de phase explicite.
+- Pas de persistance ni de sécurité production.
 - Toute modification doit passer par une Pull Request.

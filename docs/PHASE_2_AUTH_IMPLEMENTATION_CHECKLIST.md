@@ -1,8 +1,8 @@
 # Phase 2 – Checklist de démarrage de l'implémentation Auth
 
 ## Statut
-- Phase de transition conception → implémentation
-- Aucune implémentation autorisée tant que cette checklist n'est pas validée
+- Phase 2 Auth minimale déjà implémentée et validée (middleware structure-only)
+- Checklist archivée ; toute nouvelle évolution nécessite l'ouverture d'une nouvelle phase
 
 ## Pré-requis documentaires (tous requis)
 - [ ] PHASE_2_AUTHENTICATION_DESIGN validé

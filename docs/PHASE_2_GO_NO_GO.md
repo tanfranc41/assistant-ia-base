@@ -1,8 +1,8 @@
 # Phase 2 – Go / No-Go Checklist
 
 ## Statut
-- Phase 2 non démarrée
-- Aucune implémentation autorisée tant que cette checklist n’est pas validée
+- Checklist historique (Phase 2 démarrée, auth minimale implémentée et gelée)
+- À conserver comme référence de gouvernance
 
 ## Checklist (tout doit être OUI)
 - Objectifs du projet clairement définis
