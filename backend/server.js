@@ -1,4 +1,5 @@
 const express = require('express');
+const authMiddleware = require('./middleware/auth');
 
 const app = express();
 const port = 3000;
@@ -13,6 +14,10 @@ app.get('/api/info', (req, res) => {
 
 app.get('/api/version', (req, res) => {
   res.json({ version: '0.1.0', phase: 'phase-2' });
+});
+
+app.get('/api/auth/test', authMiddleware, (req, res) => {
+  res.json({ status: 'ok', auth: 'passed', phase: 'phase-2' });
 });
 
 app.use((req, res) => {
