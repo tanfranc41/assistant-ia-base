@@ -19,7 +19,7 @@
 
 ## Règles obligatoires
 - Tout nouvel endpoint protégé doit être documenté avant implémentation
-- Toute règle d’autorisation doit être définie avant code
+- Toute règle d’autorisation doit être définie avant le code
 - Aucune évolution sans décision explicite de phase
 
 ## Porte de décision suivante
