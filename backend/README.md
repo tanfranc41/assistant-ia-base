@@ -8,6 +8,7 @@ Ce dossier démarre officiellement la Phase 2 avec un backend minimal et volonta
 - Un seul endpoint de test : `GET /health` renvoie `{ "status": "ok", "phase": "phase-2" }`.
 - Endpoint d'info statique : `GET /api/info` renvoie `{ "name": "AI Assistant", "phase": "phase-2", "status": "backend baseline active" }`.
 - Endpoint de version statique : `GET /api/version` renvoie `{ "version": "0.1.0", "phase": "phase-2" }`.
+- Endpoint de test d'authentification **temporaire et non sécurisé** : `GET /api/auth/test` (protégé uniquement par le middleware existant) renvoie `{ "status": "ok", "auth": "passed", "phase": "phase-2" }` quand le header est valide.
 - Base technique uniquement, destinée aux itérations futures.
 
 ## Authentification (middleware)
@@ -16,6 +17,7 @@ Ce dossier démarre officiellement la Phase 2 avec un backend minimal et volonta
 - Valide uniquement la structure : toute chaîne non vide après `Bearer` est acceptée (pas de déchiffrement, pas de JWT, pas de secret).
 - En cas d'absence ou de format invalide : 401 JSON `{ "error": "unauthorized", "message": "Authentication required" }`. Le code 403 est réservé mais non utilisé.
 - Ce mécanisme est une validation « structure only » et **n'est pas une sécurité réelle**.
+- Endpoint de test : `GET /api/auth/test` utilise uniquement ce middleware pour vérifier le flux. Il est **temporaire**, **non sécurisé** et ne doit servir qu'à valider manuellement le passage dans le middleware (ex. `curl -H "Authorization: Bearer test" http://localhost:3000/api/auth/test` → 200).
 
 ## Comportement d'erreur
 - Toute route inconnue retourne un JSON 404 : `{ "error": "not_found", "message": "Endpoint not found" }`.
