@@ -1,3 +1,5 @@
+const TEST_TOKEN = 'test-token';
+
 function authMiddleware(req, res, next) {
   const authHeader = req.headers.authorization;
 
@@ -17,7 +19,7 @@ function authMiddleware(req, res, next) {
     return res.status(401).json({ error: 'unauthorized', message: 'Authentication required' });
   }
 
-  if (token !== 'test-token') {
+  if (token !== TEST_TOKEN) {
     return res.status(401).json({ error: 'unauthorized', message: 'Authentication required' });
   }
 
