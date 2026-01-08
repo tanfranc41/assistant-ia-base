@@ -16,6 +16,7 @@ Ce dossier démarre officiellement la Phase 2 avec un backend minimal et volonta
 - `GET /api/auth/test` → `{ "status": "ok", "auth": "passed", "phase": "phase-2" }` quand le header contient un jeton base64-JSON valide (voir section Authentification). **Temporaire et sera supprimé plus tard**.
 
 ## Authentification (middleware)
+**Phase 2 gelée : aucun changement du middleware ou de son comportement sans ouverture explicite de phase.**
 - Middleware `middleware/auth.js` appliqué aux routes protégées.
 - Attend un header `Authorization: Bearer <token>`.
 - Le `<token>` est un **base64 d'un JSON** contenant trois champs obligatoires : `user_id` (string), `scopes` (array de strings) et `exp` (number). Aucune cryptographie, aucun secret, aucune validation métier : c'est purement une vérification de structure (**structure-only**, **non sécurisé**, **temporaire**).

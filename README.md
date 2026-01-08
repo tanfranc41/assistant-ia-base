@@ -1,16 +1,16 @@
 # Assistant IA Base
 
-Base de démonstration frontend pour un assistant IA. Tout est statique : il s’agit d’une maquette pour illustrer l’interface, sans logique serveur.
+Base de démonstration frontend pour un assistant IA, accompagnée d’un backend minimal Phase 2 (Express) avec authentification **structure-only** temporaire.
 
 ## Périmètre actuel
 - Démo frontend statique (`frontend/index.html`).
 - Interface multilingue (FR / EN / NL / DE).
 - État connecté / déconnecté simulé uniquement (login / logout en mémoire).
+- Backend minimal : endpoints publics (`/health`, `/api/info`, `/api/version`) et un endpoint protégé de test (`/api/auth/test`) derrière un middleware d'auth Base64 JSON (non sécurisé, temporaire).
 
 ## Hors périmètre
-- Pas de logique backend.
-- Pas d’authentification réelle.
 - Pas de persistance des données.
+- Pas d’authentification ou de sécurité production (jeton non signé, aucune crypto, aucun secret).
 
 ## Documentation
 - `docs/ARCHITECTURE.md` : structure du projet et périmètre de la démo.

@@ -1,32 +1,30 @@
-# Nouvelle phase : préparation produit réel
-- La phase de démonstration est définitivement close.
-- Cette étape ouvre une phase strictement dédiée à la préparation, sans implémentation fonctionnelle.
+# Nouvelle phase : transition après Auth Phase 2
+- La démo Phase 1 est close.
+- Auth Phase 2 minimale est implémentée, validée et gelée (middleware structure-only).
+- Cette étape ouvre la phase **Authorization** (travail sur scopes/règles) sans ajouter de sécurité production.
 
-## Prochaine étape (au choix, calmement)
-- A) on s’arrête là (freeze total)
-- B) on prépare un GO/NO-GO checklist
-- C) on fait un audit final ultra court (1 page)
+## Prochaine étape (décision explicite)
+- ✅ Phase Authorization (définition et application des scopes / règles d’accès)
+- ❌ Phase Data / Persistence (reportée)
+- ❌ Gel total (non retenu)
 
 ## Objectifs de la phase
-- Préparer la future architecture backend.
-- Préparer l'intégration future de l'authentification et du paiement.
-- Préparer l'intégration future de l'IA.
-- Définir des limites claires avant toute implémentation réelle.
+- Définir les règles d’autorisation (scopes, rôles) alignées sur les endpoints protégés.
+- Préparer la future persistance (conception uniquement, sans implémentation).
+- Maintenir la séparation public / protégé et le middleware existant (aucun changement).
 
 ## Ce qui est autorisé dans cette phase
-- Documentation.
-- Ébauches d'architecture.
-- Planification technique.
-- Travail sur la séparation des périmètres (frontend / backend / services).
+- Documentation et conception.
+- Définition des règles d’accès et des scopes.
+- Planification technique de la persistance.
+- Vérification de la conformité avec le middleware Auth Phase 2 figé.
 
 ## Ce qui est strictement interdit
-- Aucun backend fonctionnel.
-- Aucune authentification réelle.
-- Aucune activation de paiement.
-- Aucune base de données ni persistance.
-- Aucun appel IA.
-- Aucun traitement de données utilisateurs.
+- Modification du middleware Auth Phase 2 ou ajout de sécurité production.
+- Activation de persistance ou stockage de données réelles.
+- Activation de paiement ou appels IA.
+- Traitement de données utilisateurs réelles.
 
 ## Passage à la phase suivante
-- Toute implémentation réelle nécessitera l'ouverture explicite d'une nouvelle phase.
-- Ce document n'autorise pas la livraison de fonctionnalités ni de code applicatif.
+- Toute implémentation de persistance ou de sécurité réelle nécessitera l'ouverture explicite d'une nouvelle phase.
+- Ce document n'autorise pas la livraison de fonctionnalités de production.

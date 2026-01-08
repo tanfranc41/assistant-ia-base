@@ -2,7 +2,7 @@
 
 ## État actuel
 - Démo Phase 1 figée et validée
-- Aucune implémentation backend n'existe
+- Backend minimal Phase 2 existe (endpoints publics + middleware auth structure-only)
 - Socle documentaire complété
 
 ## Documents complétés
@@ -12,11 +12,11 @@
 - IMPLEMENTATION_CHECKLIST
 
 ## Ce qui est autorisé ensuite
-- Discussions conceptuelles uniquement
-- Aucun code avant décision explicite de lancement
+- Discussions conceptuelles pour l'autorisation et la persistance (phase Authorization ouverte)
+- Aucun changement sur le middleware Auth Phase 2 sans nouvelle décision
 
 ## Ce qui est interdit
-- Toute implémentation backend ou auth
+- Toute sécurité production ou persistance
 - Toute base de données, secret ou déploiement
 
 ## Règle de Go / No-Go
