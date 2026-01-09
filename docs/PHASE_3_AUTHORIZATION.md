@@ -1,46 +1,36 @@
-# Phase 3 – Authorization (prêt à démarrer)
+# Phase 3 – Authorization : règles (conceptuelles)
 
 ## Statut
-- Phase Authorization ouverte (documentation)
-- Aucune implémentation d’autorisation encore autorisée
+- Phase Authorization en cadrage
+- Aucune implémentation d’autorisation autorisée
 
-## Objectif
-- Définir les scopes requis par endpoint protégé
-- Préparer la validation avant tout code
+## Principe général
+- Un endpoint protégé déclare explicitement les scopes requis
+- Tous les scopes requis sont cumulatifs (logique AND)
+- Aucune décision implicite
 
-## Endpoints concernés (protégés)
-*(exemples conceptuels, cohérents avec PHASE_2_PROTECTED_ENDPOINTS.md)*
-
-- `GET /api/user/profile`
-  - Scopes requis : `read:profile` (`user:read` en nomenclature simplifiée)
-
-- `PUT /api/user/profile`
-  - Scopes requis : `write:profile` (`user:write` en nomenclature simplifiée)
-
-- `GET /api/conversations`
-  - Scopes requis : `read:conversations` (`conversation:read` en nomenclature simplifiée)
-
-- `POST /api/conversations`
-  - Scopes requis : `write:conversations` (`conversation:write` en nomenclature simplifiée)
-
-- `GET /api/admin/stats`
-  - Scopes requis : `admin:read`
-
-## Règles d’autorisation (conceptuelles)
-- Autorisation appliquée côté serveur uniquement
+## Règles générales d’autorisation
+- L’autorisation est appliquée côté serveur uniquement
 - Le frontend ne décide jamais des permissions
-- Tout endpoint protégé déclare explicitement ses scopes requis
 - Principe du moindre privilège
 - Séparation stricte des endpoints utilisateur et administrateur
+- Aucun héritage automatique de scopes
 
-## Hors périmètre
+## Exemples conceptuels (non implémentés)
+- `GET /api/user/profile` → scopes requis : `read:profile`
+- `PUT /api/user/profile` → scopes requis : `write:profile`
+- `GET /api/conversations` → scopes requis : `read:conversations`
+- `POST /api/conversations` → scopes requis : `write:conversations`
+- `GET /api/admin/stats` → scopes requis : `admin:read`
+
+## Hors périmètre explicite
 - Aucun code
-- Aucun choix de bibliothèque RBAC / ABAC
+- Aucun middleware d’autorisation
+- Aucun choix RBAC / ABAC
 - Aucun stockage ou persistance
 - Aucune sécurité production
 
 ## Porte de décision
-- L’implémentation de l’autorisation est autorisée uniquement après :
-  - Validation de ce document
-  - Mise à jour d’OpenAPI (dans une étape dédiée)
-  - Décision GO explicite “Authorization Implementation”
+- L’implémentation de l’autorisation est interdite tant que :
+  - Ce document n’est pas validé
+  - Une décision GO explicite “Authorization Implementation” n’est pas actée
