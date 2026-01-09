@@ -32,6 +32,10 @@ function decodeTokenPayload(authorizationHeader) {
     return null;
   }
 
+  if (!parsedPayload || typeof parsedPayload !== 'object' || Array.isArray(parsedPayload)) {
+    return null;
+  }
+
   const hasValidUserId = typeof parsedPayload.user_id === 'string' && parsedPayload.user_id.trim().length > 0;
   const hasValidScopes =
     Array.isArray(parsedPayload.scopes) &&
