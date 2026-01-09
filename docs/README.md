@@ -4,6 +4,7 @@ Le dossier `docs/` rassemble l’ensemble de la documentation du projet.
 
 ## Documents disponibles
 - `ARCHITECTURE.md` : structure du projet et périmètre de la démo.
+- `PRODUCT_CANONIQUE.md` : cadrage fonctionnel canonique du produit IA.
 - `ROADMAP.md` : étapes futures prévues.
 - `fr/I18N.md` (et traductions) : règles d’internationalisation pour la démo frontend.
 
