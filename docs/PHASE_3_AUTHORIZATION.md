@@ -12,16 +12,16 @@
 *(exemples conceptuels, cohérents avec PHASE_2_PROTECTED_ENDPOINTS.md)*
 
 - `GET /api/user/profile`
-  - Scopes requis : `user:read`
+  - Scopes requis : `read:profile` (`user:read` en nomenclature simplifiée)
 
 - `PUT /api/user/profile`
-  - Scopes requis : `user:write`
+  - Scopes requis : `write:profile` (`user:write` en nomenclature simplifiée)
 
 - `GET /api/conversations`
-  - Scopes requis : `conversation:read`
+  - Scopes requis : `read:conversations` (`conversation:read` en nomenclature simplifiée)
 
 - `POST /api/conversations`
-  - Scopes requis : `conversation:write`
+  - Scopes requis : `write:conversations` (`conversation:write` en nomenclature simplifiée)
 
 - `GET /api/admin/stats`
   - Scopes requis : `admin:read`
