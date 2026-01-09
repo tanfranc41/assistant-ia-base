@@ -1,13 +1,13 @@
 # Audit global chronologique
 
 ## 1. Origine du projet
-- Intention initiale : fournir une démo d’assistant IA centrée sur une interface statique multilingue (README.md, docs/ARCHITECTURE.md, docs/fr/DEMO.md).
+- Intention initiale : fournir une démo d’assistant IA conversationnel axée sur une interface statique multilingue (README.md, docs/ARCHITECTURE.md, docs/fr/DEMO.md).
 - Périmètre de départ : frontend uniquement, sans backend, sans authentification réelle, sans persistance (docs/ARCHITECTURE.md, docs/LOCK.md).
 - Frontend / backend : séparation déclarée ; backend d’abord laissé vide par choix (docs/ARCHITECTURE.md).
 - Objectif de démonstration : montrer l’UI, le changement de langue et un état connecté/déconnecté simulé (frontend/index.html, docs/I18N.md et dossiers de traduction).
 
 ## 2. Phase 1 – État initial
-- Ce qui existait : page statique, traductions FR/EN/NL/DE alignées, manifest + service worker pour la vitrine, aucune logique serveur (frontend/*, docs/de|en|fr|nl/DEMO.md).
+- Ce qui existait : page statique, traductions FR/EN/NL/DE alignées, manifest + service worker pour la vitrine, aucune logique serveur (frontend/*, docs/{de,en,fr,nl}/DEMO.md).
 - Ce qui était volontairement absent : authentification, API, stockage, appels IA, paiement (docs/LOCK.md, docs/PHASE_2_EXPLAINED.md).
 - Décisions prises : français langue de référence, documentation-first, évolutions via Pull Request uniquement (README.md, docs/DECISIONS.md, docs/LOCK.md).
 
@@ -28,7 +28,8 @@
 - Pourquoi ce gel existe : sécuriser le périmètre démo et éviter toute dérive sans ouverture explicite d’une nouvelle phase (docs/LOCK.md, docs/PHASE_NEXT.md).
 
 ## 5. Pull Requests MERGÉES
-- PR #87 « Document Phase 3 authorization rules » (commit e85c861) : merge ayant introduit la base actuelle (backend Express minimal, middleware auth structure-only, frontend démo multilingue, manifest + service worker, documentation complète Phase 2 et cadrage Phase 3). Phase concernée : fin Phase 2 / ouverture documentaire Phase 3.
+- PR #87 « Document Phase 3 authorization rules » (commit e85c861) : merge ayant introduit la base actuelle (backend Express minimal, middleware auth structure-only, frontend démo multilingue, manifest + service worker, documentation complète Phase 2 et cadrage Phase 3).
+- Phase concernée : fin Phase 2 / ouverture documentaire Phase 3.
 
 ## 6. Pull Requests NON MERGÉES
 - Aucune Pull Request ouverte, draft ou abandonnée n’est observable dans l’historique local du dépôt ; seul le merge de la PR #87 est présent (git log local).
@@ -48,7 +49,8 @@
 - Authentification : token Bearer base64 JSON, validation structurelle uniquement, gelée en Phase 2.
 - Autorisation : aucune implémentation ; règles conceptuelles listées pour Phase 3 (docs/PHASE_3_AUTHORIZATION*.md).
 - Frontend : page statique multilingue, état connecté/déconnecté simulé, assets PWA présents, aucune intégration serveur.
-- Documentation : volumineuse et centrée Phase 2/3 (OpenAPI, checklists, décisions, règles d’i18n) ; certains documents hérités mentionnent encore un backend vide, écart constaté par rapport au code actuel.
+- Documentation : volumineuse et centrée Phase 2/3 (OpenAPI, checklists, décisions, règles d’i18n).
+- Documents hérités : docs/ARCHITECTURE.md et docs/LOCK.md décrivent encore un backend absent, et PHASE_2_EXPLAINED.md interdit toujours tout code serveur malgré le backend minimal en place (écart identifié).
 
 ## 10. Prochaines options possibles
 - Continuer : lever le gel via une nouvelle phase pour faire évoluer l’auth ou l’autorisation.
