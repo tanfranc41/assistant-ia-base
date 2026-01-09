@@ -49,8 +49,12 @@ function decodeTokenPayload(req) {
 }
 
 function hasRequiredScopes(grantedScopes, requiredScopes) {
+  if (!Array.isArray(grantedScopes)) {
+    return false;
+  }
+
   if (!Array.isArray(requiredScopes) || requiredScopes.length === 0) {
-    return true;
+    return false;
   }
 
   return requiredScopes.every((requiredScope) => grantedScopes.includes(requiredScope));
@@ -58,9 +62,9 @@ function hasRequiredScopes(grantedScopes, requiredScopes) {
 
 function requireScopes(requiredScopes) {
   return (req, res, next) => {
-    const payload = decodeTokenPayload(req);
+    const payload = req.auth;
 
-    if (!payload) {
+    if (!payload || !Array.isArray(payload.scopes)) {
       return res.status(401).json({ error: 'unauthorized', message: 'Authentication required' });
     }
 
@@ -68,11 +72,11 @@ function requireScopes(requiredScopes) {
       return res.status(403).json({ error: 'forbidden', message: 'Insufficient scope' });
     }
 
-    req.auth = payload;
     next();
   };
 }
 
 module.exports = {
   requireScopes,
+  decodeTokenPayload,
 };

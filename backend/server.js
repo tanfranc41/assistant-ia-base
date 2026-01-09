@@ -1,10 +1,13 @@
 const express = require('express');
 const authMiddleware = require('./middleware/auth');
-const { requireScopes } = require('./middleware/authorization');
+const { requireScopes, decodeTokenPayload } = require('./middleware/authorization');
 
 const app = express();
 const port = 3000;
 const protectedRouter = express.Router();
+const DEFAULT_USER_ID = 'user-123';
+const STUB_NEW_CONVERSATION_ID = 'conv-new';
+const STUB_NEW_MESSAGE_ID = 'msg-new';
 
 app.use(express.json());
 
@@ -21,9 +24,19 @@ app.get('/api/version', (req, res) => {
 });
 
 protectedRouter.use(authMiddleware);
+protectedRouter.use((req, res, next) => {
+  const payload = decodeTokenPayload(req);
+
+  if (!payload) {
+    return res.status(401).json({ error: 'unauthorized', message: 'Authentication required' });
+  }
+
+  req.auth = payload;
+  next();
+});
 
 protectedRouter.get('/user/profile', requireScopes(['read:profile']), (req, res) => {
-  const userId = req.auth && typeof req.auth.user_id === 'string' ? req.auth.user_id : 'user-123';
+  const userId = req.auth && typeof req.auth.user_id === 'string' ? req.auth.user_id : DEFAULT_USER_ID;
 
   res.json({
     id: userId,
@@ -36,7 +49,7 @@ protectedRouter.get('/user/profile', requireScopes(['read:profile']), (req, res)
 });
 
 protectedRouter.put('/user/profile', requireScopes(['write:profile']), (req, res) => {
-  const userId = req.auth && typeof req.auth.user_id === 'string' ? req.auth.user_id : 'user-123';
+  const userId = req.auth && typeof req.auth.user_id === 'string' ? req.auth.user_id : DEFAULT_USER_ID;
 
   res.json({
     id: userId,
@@ -81,7 +94,7 @@ protectedRouter.post('/conversations', requireScopes(['write:conversations']), (
   const title = req.body && typeof req.body.title === 'string' ? req.body.title : 'New conversation';
 
   res.status(201).json({
-    id: 'conv-new',
+    id: STUB_NEW_CONVERSATION_ID,
     title,
     created_at: '2024-01-01T00:00:00Z',
     updated_at: '2024-01-01T00:00:00Z',
@@ -113,7 +126,7 @@ protectedRouter.get('/conversations/:id/messages', requireScopes(['read:messages
       id: 'msg-1',
       conversation_id: id,
       content: 'Hello, how can I help you?',
-      role: 'user',
+      role: 'assistant',
       created_at: '2024-01-01T00:00:00Z',
     },
   ]);
@@ -122,10 +135,10 @@ protectedRouter.get('/conversations/:id/messages', requireScopes(['read:messages
 protectedRouter.post('/conversations/:id/messages', requireScopes(['write:messages']), (req, res) => {
   const { id } = req.params;
   const content = req.body && typeof req.body.content === 'string' ? req.body.content : 'Message content';
-  const role = req.body && typeof req.body.role === 'string' ? req.body.role : 'user';
+  const role = req.body && typeof req.body.role === 'string' ? req.body.role : 'assistant';
 
   res.status(201).json({
-    id: 'msg-new',
+    id: STUB_NEW_MESSAGE_ID,
     conversation_id: id,
     content,
     role,
@@ -136,7 +149,7 @@ protectedRouter.post('/conversations/:id/messages', requireScopes(['write:messag
 protectedRouter.get('/admin/users', requireScopes(['admin:users']), (req, res) => {
   res.json([
     {
-      id: 'user-123',
+      id: DEFAULT_USER_ID,
       email: 'user@example.com',
       status: 'active',
     },
