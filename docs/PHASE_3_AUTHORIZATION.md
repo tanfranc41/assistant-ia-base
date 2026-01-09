@@ -1,8 +1,8 @@
 # Phase 3 – Authorization : règles (conceptuelles)
 
 ## Statut
-- Phase Authorization en cadrage
-- Aucune implémentation d’autorisation autorisée
+- Décision GO actée pour l’implémentation serveur uniquement
+- Phase Authorization en implémentation contrôlée (scopes vérifiés côté backend)
 
 ## Principe général
 - Un endpoint protégé déclare explicitement les scopes requis
@@ -16,16 +16,15 @@
 - Séparation stricte des endpoints utilisateur et administrateur
 - Aucun héritage automatique de scopes
 
-## Exemples conceptuels (non implémentés)
+## Endpoints protégés implémentés (serveur uniquement)
 - `GET /api/user/profile` → scopes requis : `read:profile`
 - `PUT /api/user/profile` → scopes requis : `write:profile`
 - `GET /api/conversations` → scopes requis : `read:conversations`
 - `POST /api/conversations` → scopes requis : `write:conversations`
 - `GET /api/admin/stats` → scopes requis : `admin:read`
+- `GET /api/auth/test` → scopes requis : `auth:test` (test temporaire)
 
 ## Hors périmètre explicite
-- Aucun code
-- Aucun middleware d’autorisation
 - Aucun choix RBAC / ABAC
 - Aucun stockage ou persistance
 - Aucune sécurité production

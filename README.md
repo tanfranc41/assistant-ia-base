@@ -6,7 +6,7 @@ Base de démonstration frontend pour un assistant IA, accompagnée d’un backen
 - Démo frontend statique (`frontend/index.html`).
 - Interface multilingue (FR / EN / NL / DE).
 - État connecté / déconnecté simulé uniquement (login / logout en mémoire).
-- Backend minimal : endpoints publics (`/health`, `/api/info`, `/api/version`) et un endpoint protégé de test (`/api/auth/test`) derrière un middleware d'auth Base64 JSON (non sécurisé, temporaire).
+- Backend minimal : endpoints publics (`/health`, `/api/info`, `/api/version`) et endpoints protégés (`/api/user/profile`, `/api/conversations`, `/api/admin/stats`, `/api/auth/test`) derrière un middleware d'auth Base64 JSON (non sécurisé, temporaire) et une autorisation par scopes côté serveur.
 
 ## Hors périmètre
 - Pas de persistance des données.
